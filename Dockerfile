@@ -1,10 +1,16 @@
-FROM jenkins/jenkins:lts
+version: '3.8'
 
-USER root
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    user: root
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
 
-# Install Docker CLI
-RUN apt-get update && \
-    apt-get install -y docker.io && \
-    usermod -aG docker jenkins
-
-USER jenkins
+volumes:
+  jenkins_home:
