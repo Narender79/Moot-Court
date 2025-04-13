@@ -1,9 +1,10 @@
-FROM python:3
-RUN pip install django==3.2
+FROM jenkins/jenkins:lts
 
-COPY . .
-// CI/CD Pipeline In Jenkins >
-// 2022
-RUN python manage.py migrate
-EXPOSE 8000
-CMD ["python", "manage.py", "runserver","0.0.0.0:8000"]
+USER root
+
+# Install Docker CLI
+RUN apt-get update && \
+    apt-get install -y docker.io && \
+    usermod -aG docker jenkins
+
+USER jenkins
