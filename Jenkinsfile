@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        GITHUB_TOKEN = credentials('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') // your Jenkins credential ID
+        GITHUB_TOKEN = credentials('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') // your Jenkins credential ID
     }
     stages {
         stage('Checkout') {
