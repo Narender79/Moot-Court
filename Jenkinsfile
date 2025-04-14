@@ -23,7 +23,7 @@ pipeline {
         stage('Run Docker Image') {
             steps {
                 script {
-                    sh 'docker run -d -p 8080:8080 moot-court-app'
+                    sh 'docker run -d -p 8085:8080 moot-court-app'
                 }
             }
         }
